@@ -20,7 +20,9 @@
                     )
                 );
                 ?>
+                <li><a>Tous droits réservés</a></li>
             </ul><!-- .footer-navigation-wrapper -->
+           
         </nav><!-- .footer-navigation -->
     <?php endif; ?>
 </footer><!-- #colophon -->

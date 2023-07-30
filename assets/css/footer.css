@@ -17,7 +17,13 @@ footer{
     text-align: center;
     line-height: 2em;
 }
-.footer-navigation-wrapper li a {
+
+.site-footer p{
+   text-align: center;
+   margin: 0;
+}
+
+.footer-navigation-wrapper li a, .site-footer p{
     color: black;
     padding: 14px 16px;
     text-decoration: none;
