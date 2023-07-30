@@ -1,0 +1,33 @@
+footer{
+    position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+}
+
+.footer-navigation-wrapper{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-navigation-wrapper li{
+    text-align: center;
+    line-height: 2em;
+}
+.footer-navigation-wrapper li a {
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-navigation-wrapper{
+        flex-direction: column;
+        justify-content: center;
+    }
+}

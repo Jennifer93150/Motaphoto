@@ -1,0 +1,59 @@
+.modal{
+    background-color: rgba(0, 0, 0, 0.808);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 99;
+}
+
+/* modale */
+.modal-content{
+    background-color: white;
+    margin: 30px auto;
+    width: 40%;
+}
+
+.modal-content-title{
+    width: 100%;
+}
+/* formulaire */
+.modal-content-form{
+    width: 70%;
+    margin: 20px auto;
+}
+
+.modal-content-form form p{
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+/* input */
+.modal-content-form form input{
+    height: 40px;  
+    width: 100%;
+}
+.modal-content-form form input, .modal-content-form form textarea{
+    color: #313144;
+    border-radius: 8px;
+    width: 100%;
+}
+/* bouton envoyer */
+.modal-content-form form input[type="submit"]{
+    border: none;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 768px) {
+    /* formulaire */
+    .modal-content{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    /* formulaire */
+    .modal-content{
+        width: 70%;
+    }
+}
