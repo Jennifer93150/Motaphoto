@@ -1,8 +1,10 @@
 footer{
-    position: absolute;
-  bottom: 0;
-  height: 40px;
-  width: 100%;
+    /* position: absolute;
+    bottom: -30px; */
+    height: 40px;
+    width: 100%;
+    border-top: 1px solid black;
+    padding: 10px 0;
 }
 
 .footer-navigation-wrapper{
@@ -10,12 +12,13 @@ footer{
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .footer-navigation-wrapper li{
     text-align: center;
     line-height: 2em;
+    margin: 0 20px;
 }
 
 .site-footer p{

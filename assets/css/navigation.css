@@ -1,91 +1,114 @@
 /** BARRE DE NAVIGATION **/
-.navigation{
-    background-color: white;
-    height: 80px;
+header .navigation {
+  background-color: white;
+  height: 80px;
+  box-shadow: 0px 4px 14px 10px #00000008;
+  width: 100%;
+}
+
+/*logo*/
+.navigation-logo {
+  height: 1em;
+  margin: 30px;
+}
+
+/*croix*/
+.navigation_cross {
+  display: none;
+}
+
+.menu-primary-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*menu*/
+.navigation_menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navigation_menu li a {
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.navigation_menu li a:hover {
+  font-weight: bolder;
+}
+
+.navigation .navigation_burger {
+  color: black;
+  display: none;
+}
+
+@media screen and (min-width: 768px){
+  header .navigation{
     display: flex;
     justify-content: space-around;
   }
-  /*logo*/
-  .navigation img{
-    height: 1em;
-    margin: 30px;
+}
+
+/* The "responsive" class is added to the navigation_menu with JavaScript when the user clicks on the navigation_burger. This class makes the navigation_menu look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 768px) {
+  .navigation {
+    position: relative;
+    display: block;
   }
-  /*croix*/
-  .navigation_cross{
+
+  .navigation-logo {
+    height: 0.8em;
+  }
+
+  .menu-primary-container {
+    background-color: #E00000;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    
+  }
+
+  .navigation.responsive .navigation_menu {
+    display: block;
+    position: relative;
+  }
+
+  /* MENU NO RESPONSIVE */
+  .navigation_menu a {
     display: none;
   }
-  
-  .menu-primary-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  /*menu*/
-  .navigation_menu{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .navigation_menu li a{
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
+
+  .navigation a.navigation_burger {
+    float: right;
+    display: block;
     text-decoration: none;
-    font-size: 16px;
-    text-transform: uppercase;
+    position: absolute;
+    right: 30px;
+    top: 25px;
   }
-  
-  .navigation .navigation_burger{
-    color: black;
+
+  .navigation.responsive .navigation_menu a {
+    color: white;
+    float: none;
+    display: block;
+  }
+
+  .navigation.responsive .navigation_cross {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+  }
+
+  .navigation.responsive a.navigation_burger {
     display: none;
   }
-  
-  /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the navigation_menu (.navigation_burger) */
-  @media screen and (max-width: 600px) {
-    .navigation_menu a {display: none;}
-    .navigation a.navigation_burger {
-      float: right;
-      display: block;
-      text-decoration: none;
-      position: absolute;
-      right: 30px;
-      top: 25px;
-    }
-  }
-  
-  /* The "responsive" class is added to the navigation_menu with JavaScript when the user clicks on the navigation_burger. This class makes the navigation_menu look good on small screens (display the links vertically instead of horizontally) */
-  @media screen and (max-width: 600px) {
-    .navigation{
-      position: relative;
-      display: block;
-    }
-  
-    .menu-primary-container{
-      background-color: #E00000;
-    }
-  
-    .navigation.responsive .navigation_menu {
-      display: block;
-      position: relative;
-    }
-  
-    .navigation.responsive .navigation_menu a {
-      color: white;
-      float: none;
-      display: block;
-    }
-  
-    .navigation.responsive .navigation_cross {
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-  
-    .navigation.responsive a.navigation_burger{
-      display: none;
-    }
-  
-  }
+
+}

@@ -1,13 +1,15 @@
 .modal{
+    display: none;
     background-color: rgba(0, 0, 0, 0.808);
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99;
 }
 
-/* modale */
+/* MODAL */
 .modal-content{
     background-color: white;
     margin: 30px auto;
@@ -17,7 +19,7 @@
 .modal-content-title{
     width: 100%;
 }
-/* formulaire */
+/* FORM */
 .modal-content-form{
     width: 70%;
     margin: 20px auto;
@@ -28,31 +30,34 @@
     text-transform: uppercase;
 }
 
-/* input */
+/* INPUT */
 .modal-content-form form input{
+    text-transform: uppercase;
     height: 40px;  
     width: 100%;
 }
+
 .modal-content-form form input, .modal-content-form form textarea{
     color: #313144;
     border-radius: 8px;
     width: 100%;
 }
-/* bouton envoyer */
+
+/* submit button */
 .modal-content-form form input[type="submit"]{
     border: none;
     border-radius: 0;
 }
 
 @media screen and (max-width: 768px) {
-    /* formulaire */
+    /* MODAL WIDTH */
     .modal-content{
         width: 60%;
     }
 }
 
 @media screen and (max-width: 425px) {
-    /* formulaire */
+    /* MODAL WIDTH */
     .modal-content{
         width: 70%;
     }

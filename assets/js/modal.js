@@ -1,14 +1,21 @@
+//DISPLAY MODAL
 window.addEventListener("DOMContentLoaded", (event) => {
-  
   const modal = document.getElementById('modal');
+  const contactLink = document.querySelector('li#menu-item-27');
+  const btnContactSinglePage = document.getElementById('single-page-button');
+
+  contactLink.addEventListener('click', function () {
+    modal.style.display = "block";
+  })
   
-  // const contact = document.getElementById('menu-item-12');
+  if(btnContactSinglePage){
+    btnContactSinglePage.addEventListener('click', function () {
+      modal.style.display = "block";
+    })
+  }
+ 
 });
 
-function modalClose() { 
-  modal.style.display="none";
+function modalClose() {
+  modal.style.display = "none";
 }
-
-// contact.addEventListener('click', function() { 
-//   modal.style.display="block";
-// })

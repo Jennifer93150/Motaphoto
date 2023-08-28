@@ -1,19 +1,36 @@
 <?php
 
+/**
+ * Pagination query
+ */
+ require get_stylesheet_directory() . '/photo-query.php';
+ 
 function theme_enqueue_styles()
 {
-    // Chargement du style.css du thème parent Twenty Twenty
+    // Load style.css parent theme Twenty Twenty
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    // Chargement du style.css pour nos personnalisations
+    // Load my style.css
     wp_enqueue_style('child-theme-style', get_stylesheet_directory_uri() . '/style.css', array(), filemtime(get_stylesheet_directory() . '/style.css'));
     wp_enqueue_style('navigation-style', get_stylesheet_directory_uri() . '/assets/css/navigation.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/navigation.css'));
     wp_enqueue_style('footer-style', get_stylesheet_directory_uri() . '/assets/css/footer.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/footer.css'));
     wp_enqueue_style('modal-style', get_stylesheet_directory_uri() . '/assets/css/modal.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/modal.css'));
+    wp_enqueue_style('single-page-style', get_stylesheet_directory_uri() . '/assets/css/single-page.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/single-page.css'));
+    wp_enqueue_style('hero-style', get_stylesheet_directory_uri() . '/assets/css/hero.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/hero.css'));
+    wp_enqueue_style('gallery-style', get_stylesheet_directory_uri() . '/assets/css/gallery.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/gallery.css'));
+    wp_enqueue_style('photo-block-style', get_stylesheet_directory_uri() . '/assets/css/photo_block.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/photo_block.css'));
+    wp_enqueue_style('lightbox-style', get_stylesheet_directory_uri() . '/assets/css/lightbox.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/lightbox.css'));
+    wp_enqueue_style('overlay', get_stylesheet_directory_uri() . '/assets/css/overlay.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/overlay.css'));
+    wp_enqueue_style('form', get_stylesheet_directory_uri() . '/assets/css/form.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/form.css'));
 
-    // Fichiers Js
+    // Files Js
     wp_enqueue_script('navigation', get_stylesheet_directory_uri() . '/assets/js/navigation.js', array(), filemtime(get_stylesheet_directory() . '/assets/js/navigation.js'));
     wp_enqueue_script('modal', get_stylesheet_directory_uri() . '/assets/js/modal.js', array(), filemtime(get_stylesheet_directory() . '/assets/js/modal.js'));
-
+    wp_enqueue_script('JQuery', 'https://code.jquery.com/jquery-3.4.1.min.js');
+    wp_enqueue_script('changeReferenceModal', get_stylesheet_directory_uri() . '/assets/js/changeRefModal.js', array(), filemtime(get_stylesheet_directory() . '/assets/js/changeRefModal.js'));
+    wp_enqueue_script('photo-query', get_stylesheet_directory_uri() . '/assets/js/photo-query.js', array(), filemtime(get_stylesheet_directory() . '/assets/js/photo-query.js'));
+    wp_enqueue_script('lightbox', get_stylesheet_directory_uri() . '/assets/js/lightbox.js', array(), filemtime(get_stylesheet_directory() . '/assets/js/lightbox.js'));
+    wp_enqueue_script('form', get_stylesheet_directory_uri() . '/assets/js/form.js', array(), filemtime(get_stylesheet_directory() . '/assets/js/form.js'));
+    
     //Google fonts
     wp_enqueue_style('body-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat&family=Space+Mono&display=swap', false);
     wp_enqueue_style('form-google-fonts', ' https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@500&family=Space+Mono&display=swap', false);
@@ -23,48 +40,28 @@ function theme_enqueue_styles()
 
 }
 
-//Ajout de nouveaux emplacements de menu
-function register_my_menu()
-{
+function mota_setup()
+{   //Add menus
     register_nav_menu('primary', 'Menu de navigation');
     register_nav_menu('footer', 'Pied de page');
+
+    // Add option featured image
+    add_theme_support('post-thumbnails');
+    // Add Image Sizes
+    mota_add_image_sizes();
 }
 
-// creation de type de contenu personnalisé (Photo)
-function motaphoto_register_custom_post_types()
+/*
+** Custom Image Sizes
+*/
+function mota_add_image_sizes()
 {
-    $labels_photo = array(
-        'menu_name'             => __('Photos', 'motaphoto'),
-        'name_admin_bar'        => __('Photo', 'motaphoto'),
-        'add_new_item'          => __('Ajouter un nouvel Photo', 'motaphoto'),
-        'new_item'              => __('Nouvel Photo', 'motaphoto'),
-        'edit_item'             => __('Modifier l\'Photo', 'motaphoto'),
-    );
-
-    $args_photo = array(
-        'label'                 => __('Photos', 'motaphoto'),
-        'description'           => __('Photos', 'motaphoto'),
-        'labels'                => $labels_photo,
-        'supports'              => array('title', 'thumbnail', 'excerpt', 'editor'),
-        'hierarchical'          => false,
-        'public'                => true,
-        'show_ui'               => true,
-        'show_in_menu'          => true,
-        'menu_position'         => 40,
-        'show_in_admin_bar'     => true,
-        'show_in_nav_menus'     => true,
-        'can_export'            => true,
-        'has_archive'           => true,
-        'exclude_from_search'   => false,
-        'publicly_queryable'    => true,
-        'capability_type'       => 'post',
-        'menu_icon'                       => 'dashicons-embed-photo',
-    );
-
-    register_post_type('cif_photo', $args_photo);
+    add_image_size('mota-hero', 1440, 962, true);
+    add_image_size('mota-gallery', 564, 495, true);
+    add_image_size('mota-single-page', 563, 844, true);
 }
 
 /***** Actions *****/
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
-add_action('after_setup_theme', 'register_my_menu');
-add_action('init', 'motaphoto_register_custom_post_types', 11);
+add_action('after_setup_theme', 'mota_setup');
+

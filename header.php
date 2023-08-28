@@ -1,3 +1,14 @@
+<?php 
+/**
+ * Header file for the Motaphoto WordPress theme.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Motaphoto
+ * @since Motaphoto
+ */
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -20,25 +31,29 @@
 
         <div id="content" class="site-content">
             <div id="primary" class="content-area">
-                <main id="main" class="site-main">
+            <header>
+                        <!-- BARRE DE NAVIGATION + MENU  -->
+                        <?php if (has_nav_menu('primary')) : ?>
+                            <nav id="navigation" class="navigation" aria-label="<?php esc_attr_e('Primary menu', 'motaphoto'); ?>">
+                                <a href="#home"><img class="navigation-logo" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Logo.png'; ?>" alt="Nathalie Mota"></a>
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'theme_location'  => 'primary',
+                                        'items_wrap'      => '<ul id="myTopnav" class="navigation_menu">%3$s</ul>',
+                                        'fallback_cb'     => false,
+                                    )
+                                );
+                                ?>
+                                <div id="navigation_cross" class="navigation_cross"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Croix.png'; ?>" alt="burger croix" onclick="menuClose()"></div>
+                                <a href="javascript:void(0);" id="navigation_burger" class="navigation_burger" onclick="menuClose()">
+                                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Burger.png'; ?>" alt="">
+                                </a>
+                            </nav><!-- #site-navigation -->
+                        <?php
+                        endif;
 
-                    <!-- BARRE DE NAVIGATION + MENU  -->
-                    <?php if (has_nav_menu('primary')) : ?>
-                        <nav id="navigation" class="navigation" aria-label="<?php esc_attr_e('Primary menu', 'motaphoto'); ?>">
-                            <a href="#home"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Logo.png'; ?>" alt="Nathalie Mota"></a>
-                            <?php
-                            wp_nav_menu(
-                                array(
-                                    'theme_location'  => 'primary',
-                                    'items_wrap'      => '<ul id="myTopnav" class="navigation_menu">%3$s</ul>',
-                                    'fallback_cb'     => false,
-                                )
-                            );
-                            ?>
-                            <div id="navigation_cross" class="navigation_cross"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Burger croix.png'; ?>" alt="burger croix" onclick="menuClose()"></div>
-                            <a href="javascript:void(0);" id="navigation_burger" class="navigation_burger" onclick="menuClose()">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        </nav><!-- #site-navigation -->
-                    <?php
-                    endif;
+                        ?>
+                    </header>
+                <main id="main" class="site-main">
+                   

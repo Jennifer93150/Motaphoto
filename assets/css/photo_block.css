@@ -1,0 +1,14 @@
+.block-photo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.block-photo img {
+    /* sets the image to its container */
+    max-width : 100%;
+    height : auto;
+}
+.block-photo-wrapper{
+    position: relative;
+    margin: 5px;
+}
