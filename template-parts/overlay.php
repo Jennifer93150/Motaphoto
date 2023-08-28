@@ -20,9 +20,8 @@
     // $cat = the_terms($post->ID, 'categorie');
     // $the_post = get_post($post->ID); // On récupère le post
     // $the_title = $the_post->post_title; // On récupère le contenu du post
-var_dump($image_url);
     ?>
-    <img class="overlay-icon overlay-icon_eye" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Icon_eye.png'; ?>" alt="icône oeil">
+    <a href="<?php the_permalink($post->ID); ?>"><img class="overlay-icon overlay-icon_eye" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Icon_eye.png'; ?>" alt="icône oeil"></a>
     <img class="overlay-icon overlay-icon_fullscreen" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Icon_fullscreen.png'; ?>" data-image="<?php echo $image_url; ?>" data-count="<?php echo $countPhotos; ?>" data-cat="<?php $categoryNameSingle; ?>" data-ref="<?php the_field('reference', $post->ID); ?>" data-title="<?php echo $the_title; ?>" alt="icône fullscreen" onclick="openLightbox()">
     <p class="overlay-icon overlay-ref"><?php the_field('reference', $post->ID); ?></p>
     <p class="overlay-icon overlay-cat"><?php the_terms($post->ID, 'categorie'); ?></p>

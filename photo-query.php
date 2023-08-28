@@ -1,10 +1,10 @@
 <?php
 
 // Fonction de filtre
-function cc_formation_filter_function()
+function filter_function()
 {
-	$category = $_POST['category_formation_filters'];
-	$format = $_POST['format_formation_filters'];
+	$category = $_POST['category_filter'];
+	$format = $_POST['format_filter'];
 	$order = $_POST['order_filter'];
 	
 	$args = array(
@@ -117,5 +117,5 @@ add_action('wp_ajax_nopriv_load_more_photos_single', 'load_more_photos_single');
 add_action('wp_ajax_load_more_photos_home', 'load_more_photos_home');
 add_action('wp_ajax_nopriv_load_more_photos_home', 'load_more_photos_home');
 
-add_action('wp_ajax_ccformationfilter', 'cc_formation_filter_function');
-add_action('wp_ajax_nopriv_ccformationfilter', 'cc_formation_filter_function');
+add_action('wp_ajax_filter', 'filter_function');
+add_action('wp_ajax_nopriv_filter', 'filter_function');

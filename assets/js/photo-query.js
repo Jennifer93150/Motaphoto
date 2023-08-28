@@ -55,16 +55,16 @@ jQuery(function ($) {
     });
 
     /* FILTERING FUNCTION ON FORMATION ARCHIVE PAGE */
-    $('#formation_filters').change(function () {    
+    $('#filters').change(function () {    
        
         $.ajax({
             url: ajaxurl,
-            // data: $('#formation_filters').serialize(), // form data
+            // data: $('#filters').serialize(), // form data
             data: {
-                action: 'ccformationfilter',
-                category_formation_filters: $('#category').val(),
-                format_formation_filters: $('#format').val(),
-                order_filter: $('#order_filter').val(),
+                action: 'filter',
+                category_filter: $('#category').val(),
+                format_filter: $('#format').val(),
+                order_filter: $('#order').val(),
             },
             dataType: 'json',
             type: 'POST',
@@ -89,49 +89,21 @@ jQuery(function ($) {
     });
 });
 
-function toggleDropdown() {
-    const dropdown = $('.custom-dropdown');
-    dropdown.toggleClass('open');
+function toggleDropdown(element) {
+    console.log(element)
+    $(element).parent().toggleClass('open');
 }
 
-function selectOption(optionElement) {
-    // const category = $(optionElement).attr('value');
-    // const format = $('#format').attr('value');
-    // const order = $('#order_filter').attr('value');
-    
-    // const data = { 
-    //     'categorie': category,
-    // };
-    // Envoi de la valeur sélectionnée vers le serveur en utilisant AJAX
-    // $.ajax({
-    //     type: "POST",
-    //     url: ajaxurl,
-    //     data: JSON.stringify(data),
-    //     contentType: "application/json",
-    //     success: function(data) {
-    //         console.log(data)
-    //         current_page_myajax = 1;
-
-    //         posts_myajax = data.posts;
-
-    //         max_page_myajax = data.max_page;
-
-    //         $('#cc_formation_wrap').html(data.content);
-
-    //         if (data.max_page < 2) {
-    //             $('#loadmore_home_gallery').hide();
-    //         } else {
-    //             $('#loadmore_home_gallery').show();
-    //         }
-    //     },
-    //     error: function(error) {
-    //         console.error("Une erreur s'est produite : " + error);
-    //     }
-    // });
-    let categorySelected = $(optionElement).attr('value');
-    $('#category').val(categorySelected);
-    toggleDropdown();
-    $('#formation_filters').change();
+function selectOption(optionElement, id) {
+    //Selection de la valeur de l'elt cliqué
+    let optionSelected = $(optionElement).attr('value');
+    //Ajout de cette valeur à l'input concerné (categorie, format, date)
+    $(id).val(optionSelected);
+    //Ouverture et fermeture du select
+    if(!$(optionElement).parent().hasClass('custom-dropdown')){
+        $('.custom-dropdown').removeClass('open');
+    }
+    $(optionElement).parent().toggleClass('open');
+    //Enclenchement du formulaire
+    $('#filters').change();
 }
-
-  
