@@ -6,7 +6,7 @@ jQuery(function ($) {
             'action': 'load_more_photos_home', // ajax action name
             'query': posts_myajax, // my assigned variable in the file photo-query.php
             'paged': current_page_myajax, // my assigned variable in the file photo-query.php
-            'order': $('#order_filter').serialize().split('=')[1]
+            'order': $('#order').serialize().split('=')[1]
         };
         $.ajax({
             url: ajaxurl, // endpoint URL AJAX de WordPress
@@ -14,7 +14,7 @@ jQuery(function ($) {
             data: data,
             success: function (response) {
                 if (response) {
-                    $('#cc_formation_wrap').append(response);
+                    $('#gallery_wrap').append(response);
                     current_page_myajax++;
 
                     if (current_page_myajax == max_page_myajax)
@@ -41,7 +41,7 @@ jQuery(function ($) {
             data: data,
             success: function (response) {
                 if (response) {
-                    $('#cc_formation_wrap').append(response);
+                    $('#gallery_wrap').append(response);
                     current_page_myajax++;
 
                     if (current_page_myajax == max_page_myajax)
@@ -69,14 +69,13 @@ jQuery(function ($) {
             dataType: 'json',
             type: 'POST',
             success: function (data) {
-            console.log(data)
                 current_page_myajax = 1;
 
                 posts_myajax = data.posts;
 
                 max_page_myajax = data.max_page;
 
-                $('#cc_formation_wrap').html(data.content);
+                $('#gallery_wrap').html(data.content);
 
                 if (data.max_page < 2) {
                     $('#loadmore_home_gallery').hide();
@@ -90,7 +89,6 @@ jQuery(function ($) {
 });
 
 function toggleDropdown(element) {
-    console.log(element)
     $(element).parent().toggleClass('open');
 }
 

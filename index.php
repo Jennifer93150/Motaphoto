@@ -16,13 +16,6 @@
  */
 
 get_header();
-get_template_part('template-parts/hero'); ?>
-
-<div class="flex-row">
-    <?php // Formulaire de filtrage. On boucle directement sur les taxonomie de mon custom post type 
-    get_template_part('template-parts/form');?>
-</div>
-
-<?php
-get_template_part('template-parts/gallery');
+get_template_part('template-parts/hero'); 
+get_template_part('template-parts/home-gallery');
 get_footer();

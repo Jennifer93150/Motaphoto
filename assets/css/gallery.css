@@ -2,7 +2,10 @@
     margin: 30px auto;
 }
 
-
+.home-page{
+    display: flex;
+    flex-direction: column;
+}
 
 
 

@@ -4,7 +4,6 @@
 
 <?php 
 get_template_part( 'template-parts/modal' );
-//voir comment recuperer l'id de la photo sur laquelle on clic pour l'afficher dans la lightbox
 get_template_part('template-parts/lightbox');
 ?>
 

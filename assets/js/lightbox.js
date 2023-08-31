@@ -1,91 +1,58 @@
-var imageUrl;
-var totalCountPhoto;
-var photoTitle;
-var reference;
+let id;
+let slideIndex = 1;
+let currentIndex;
 
-window.addEventListener("DOMContentLoaded", (event) => {
+function openLightbox(postId) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxRef = document.getElementsByClassName('lightbox-ref');
 
-    document.getElementById('cc_formation_wrap').addEventListener('click', function (event) {
-        // Vérifie si l'élément cible du clic correspond à celui sur lequel je veux agir
-        if (event.target && event.target.classList.contains('overlay-icon_fullscreen')) {
-            //Je recup les infos de l'image envoyés coté php sur l'element cliqué
-            imageUrl = event.target.getAttribute('data-image');
-            totalCountPhoto = event.target.getAttribute('data-count');
-            photoTitle = event.target.getAttribute('data-title');
-            photoRef = event.target.getAttribute('data-ref');
-
-            //Change url image in lightbox
-            const lightboxPhoto = document.querySelector("#lightbox-photo");
-            const lightboxTitle = document.querySelector("#lightbox-photo_title");
-            const lightboxRef = document.querySelector("#lightbox-photo_ref");
-            lightboxPhoto.setAttribute('src', imageUrl);
-            lightboxTitle.innerHTML=photoTitle;
-            lightboxRef.innerHTML=photoRef;
-            
-
+    data = {
+        action: 'get_post_content',
+        post_id: postId,
+    }
+    $.ajax({
+        url: ajaxurl,
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            lightboxContent.innerHTML = response;
+            // lightboxRef.innerText = ref;
+            lightbox.style.display = "block";
+            id = postId;
         }
     });
-});
-
-function openLightbox() {
-    const lightbox = document.getElementById("lightbox");
-    lightbox.style.display = "block";
-
 }
 
 function lightboxClose() {
     lightbox.style.display = "none";
 }
 
-function changeImage(change) {
-    const lightboxPhoto = document.querySelector("#lightbox-photo");
-    const lightboxId = document.querySelector("#lightbox-photo_id");
-    // ID de l'image
-    var lightboxImageId = imageUrl.split('-')[2];
-    var numberId = parseInt(lightboxImageId);
-    // ID - or + 1 (prec/next)
-    var newId = numberId += change;
+function plusSlides(n) {
+    
+    let slides = document.getElementsByClassName("slide");
+    let currentSlide = document.getElementById('slide-' + id);
+    currentIndex = parseInt(currentSlide.getAttribute('data-index'));
+    currentSlide.setAttribute('data-index', currentIndex += n);
+    slideIndex = currentIndex;
 
-    const totalImages = parseInt(totalCountPhoto); // nombre total d'images
-    var urlArray = imageUrl.split('-');
-
-    if (newId < totalImages && newId != -1) {
-        // newId = (totalImages) - 1;
-        imageUrl = urlArray[0] + '-' + urlArray[1] + '-' + newId + '-' + urlArray[3]
-    } else if (newId >= totalImages) {
-        newId = 0;
-        imageUrl = urlArray[0] + '-' + urlArray[1] + '-' + newId + '-' + urlArray[3]
-    } else if (newId < 0) {
-        newId = totalImages - 1;
-        imageUrl = urlArray[0] + '-' + urlArray[1] + '-' + newId + '-' + urlArray[3]
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+        currentSlide.setAttribute('data-index', slideIndex);
     }
-    lightboxPhoto.setAttribute('src', imageUrl);
+    if (slideIndex < 1) {
+        slideIndex = slides.length;
+        currentSlide.setAttribute('data-index', slideIndex);
+    }
+    showSlides(slideIndex);
 }
 
+function showSlides(n) {
 
+    let slides = document.getElementsByClassName("slide");
 
-
-// jQuery(document).ready(function ($) {
-//     $('.lightbox-link').click(function (e) {
-//         e.preventDefault();
-//         var target = $(this).attr('href');
-//         $(target).fadeIn();
-//     });
-
-//     $('.lightbox-content').click(function () {
-//         $(this).fadeOut();
-//     });
-
-//     // Exemple de fonctionnalité de navigation
-//     $('.lightbox-content').click(function () {
-//         $(this).fadeOut();
-//     });
-
-//     $('.lightbox-next').click(function () {
-//         var currentId = parseInt($(this).attr('data-cpt-id'));
-//         var nextId = currentId + 1; // Calculez le prochain ID
-//         // Chargez le contenu du prochain élément dans la lightbox
-//         // Mettez à jour les boutons de navigation avec les nouveaux IDs
-//     });
-
-// });
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}

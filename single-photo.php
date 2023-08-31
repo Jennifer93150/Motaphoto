@@ -62,7 +62,7 @@
 
     <!-- DISPLAY GALLERY -->
     <h3>Vous aimerez aussi </h3>
-    <div id="cc_formation_wrap" class="block-photo">
+    <div id="gallery_wrap" class="block-photo">
         <?php
         // 1. We define the arguments to define what we want to retrieve
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // Check the initial page count
@@ -94,7 +94,7 @@
         echo '<div class="loadmore_block"><button id="loadmore_single">Toutes les photos</button></div>';
     endif; ?>
     <!-- END OF PLUS BUTTON -->
-    <?php  // les variables qui vont servir l'ajax ?>
+    <?php  // Variable for Ajax ?>
     <script>
         var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
         var posts_myajax = '<?php echo serialize($my_query->query_vars) ?>',

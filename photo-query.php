@@ -1,6 +1,6 @@
 <?php
 
-// Fonction de filtre
+// Filters
 function filter_function()
 {
 	$category = $_POST['category_filter'];
@@ -9,6 +9,7 @@ function filter_function()
 	
 	$args = array(
 		'post_type' => 'photos', // Remplacez 'votre_cpt' par le nom de votre CPT
+		'posts_per_page' => 12,
 		'order' => $order,
 		'tax_query' => array(
 			'relation' => 'AND', // Utilisez 'AND' ou 'OR' en fonction de votre logique

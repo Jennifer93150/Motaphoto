@@ -1,7 +1,8 @@
 <!-- GALLERY OF HOME PAGE -->
 <section class="home-page">
+    <?php get_template_part('template-parts/form');?>
     <!-- START OF GALLERY -->
-    <div id="cc_formation_wrap" class="block-photo">
+    <div id="gallery_wrap" class="block-photo">
         <?php
         // 1. Arguments to define what we want to retrieve
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // Check the initial page count
@@ -41,7 +42,7 @@
      ?>
     <!-- END OF PLUS BUTTON -->
 
-    <?php  // les variables qui vont servir l'ajax ?>
+    <?php  // Variable for Ajax ?>
     <script>
         var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
         var posts_myajax = '<?php echo serialize($my_query->query_vars) ?>',

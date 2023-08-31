@@ -1,49 +1,76 @@
+form{
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown{
+}
+
 .custom-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-header {
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+  width: 230px;
+  height: 30px;
+  top: 51px;
+  left: 20px;
+  padding: 11px 15px 11px 15px;
+  text-transform: uppercase;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.dropdown-options {
+  z-index: 99;
+  position: absolute;
+  background-color: #fff;
+  width: 260px;
+  border-radius: 0 0 8px 8px;
+  top: 55px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.option {
+  padding: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 11px 24px 11px 24px;
+}
+
+.option:hover {
+  background-color: #E00000;
+  color: white;
+}
+
+.custom-dropdown.open .dropdown-options {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-dropdown.open {
+  border: 1px solid #215AFF;
+  border-radius: 8px 8px 0 0;
+
+}
+.custom-dropdown.open .dropdown-header {
+  border: none;
+}
+
+
+@media screen and (max-width: 1024px) {
+  form{
+    /* flex-wrap: wrap; */
   }
-  
+
   .dropdown-header {
-    border: 1px solid #ccc;
-    padding: 5px;
-    background-color: white;
-    cursor: pointer;
-    width: 230px;
+    width: 130px;
     height: 30px;
-    top: 51px;
-    left: 20px;
-    padding: 11px 18px 11px 18px;
-    border-radius: 8px;
-    text-transform: uppercase;
   }
-
-  .dropdown-header:hover{
-    border-color: #215AFF;
-  }
-
-  .dropdown-options {
-    z-index: 99;
-    display: none;
-    position: absolute;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    width: 100%;
-    border-radius: 0 0 8px 8px;
-    padding-top: 30px;
-    top: 48px;
-  }
-  
-  .option {
-    padding: 5px;
-    cursor: pointer;
-  }
-
-  .option:hover{
-    background-color: #E00000;
-    color: white;
-  }
-
-  .custom-dropdown.open .dropdown-options {
-    display: block;
-  }
-  
+}
