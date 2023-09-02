@@ -48,7 +48,6 @@
                 <div onclick="selectOption(this, order)" value="ASC" class="option">Les plus anciennes</div>
 
                 <div onclick="selectOption(this, order)" value="DESC" class="option">Les plus récentes</div>
-
             </div>
         </div>
         <!-- required hidden field for admin-ajax.php -->

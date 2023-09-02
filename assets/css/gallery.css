@@ -1,12 +1,17 @@
-.home-page button{
+.home-page button, button, input[type='submit']{
     margin: 30px auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Add transition effect on all button */
+button:hover, input[type='submit']:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.1);
 }
 
 .home-page{
     display: flex;
     flex-direction: column;
 }
-
-
-
 

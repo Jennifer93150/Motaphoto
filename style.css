@@ -12,7 +12,7 @@ Text Domain: motaphoto
 /**
  * Remove the margin in all browsers.
  */
- body {
+body {
   margin: 0;
   padding: 0;
   font-family: 'Space Mono', monospace;
@@ -20,7 +20,7 @@ Text Domain: motaphoto
   min-height: 100vh;
 }
 
-button{
+button {
   border: none;
   border-radius: 2px;
   display: flex;
@@ -30,5 +30,25 @@ button{
   height: 50px;
   cursor: pointer;
   margin: auto;
-  max-width : 100%;
+  max-width: 100%;
+}
+
+h1 {
+  font-family: Space Mono;
+  font-size: 96px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 142px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+h2 {
+  font-family: Space Mono;
+  font-size: 66px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 0em;
+  text-align: left;
 }

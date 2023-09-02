@@ -9,7 +9,7 @@ header .navigation {
 /*logo*/
 .navigation-logo {
   height: 1em;
-  margin: 30px;
+  margin: 30px 0;
 }
 
 /*croix*/
@@ -65,6 +65,7 @@ header .navigation {
 
   .navigation-logo {
     height: 0.8em;
+    margin: 30px;
   }
 
   .menu-primary-container {
@@ -72,7 +73,6 @@ header .navigation {
     position: absolute;
     width: 100%;
     z-index: 99;
-    
   }
 
   .navigation.responsive .navigation_menu {

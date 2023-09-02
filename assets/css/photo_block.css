@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .block-photo img {
     /* sets the image to its container */
     max-width : 100%;
@@ -11,4 +12,10 @@
 .block-photo-wrapper{
     position: relative;
     margin: 5px;
+}
+
+@media screen and (max-width: 768px){
+    .block-photo{
+      padding: 0 20px;
+    }
 }

@@ -47,7 +47,7 @@
                                 ?>
                                 <div id="navigation_cross" class="navigation_cross"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Croix.png'; ?>" alt="burger croix" onclick="menuClose()"></div>
                                 <a href="javascript:void(0);" id="navigation_burger" class="navigation_burger" onclick="menuClose()">
-                                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Burger.png'; ?>" alt="">
+                                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Burger.png'; ?>" alt="menu burger">
                                 </a>
                             </nav><!-- #site-navigation -->
                         <?php

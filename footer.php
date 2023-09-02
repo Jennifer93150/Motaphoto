@@ -25,7 +25,6 @@ get_template_part('template-parts/lightbox');
                     )
                 );
                 ?>
-                <li><a>Tous droits réservés</a></li>
             </ul><!-- .footer-navigation-wrapper -->
            
         </nav><!-- .footer-navigation -->

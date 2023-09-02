@@ -1,10 +1,13 @@
 footer{
-    /* position: absolute;
-    bottom: -30px; */
     height: 40px;
     width: 100%;
     border-top: 1px solid black;
     padding: 10px 0;
+}
+
+.page-template-about footer, .page-template-legal-notice footer{
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-navigation-wrapper{
@@ -21,12 +24,7 @@ footer{
     margin: 0 20px;
 }
 
-.site-footer p{
-   text-align: center;
-   margin: 0;
-}
-
-.footer-navigation-wrapper li a, .site-footer p{
+.footer-navigation-wrapper li a{
     color: black;
     padding: 14px 16px;
     text-decoration: none;

@@ -5,7 +5,6 @@ let currentIndex;
 function openLightbox(postId) {
     const lightbox = document.getElementById("lightbox");
     const lightboxContent = document.getElementById('lightbox-content');
-    const lightboxRef = document.getElementsByClassName('lightbox-ref');
 
     data = {
         action: 'get_post_content',
@@ -17,7 +16,6 @@ function openLightbox(postId) {
         data: data,
         success: function (response) {
             lightboxContent.innerHTML = response;
-            // lightboxRef.innerText = ref;
             lightbox.style.display = "block";
             id = postId;
         }
@@ -30,8 +28,8 @@ function lightboxClose() {
 
 function plusSlides(n) {
     
-    let slides = document.getElementsByClassName("slide");
-    let currentSlide = document.getElementById('slide-' + id);
+    let slides = document.getElementsByClassName("lightbox-photo");
+    let currentSlide = document.getElementById('lightbox-photo-' + id);
     currentIndex = parseInt(currentSlide.getAttribute('data-index'));
     currentSlide.setAttribute('data-index', currentIndex += n);
     slideIndex = currentIndex;
@@ -49,7 +47,7 @@ function plusSlides(n) {
 
 function showSlides(n) {
 
-    let slides = document.getElementsByClassName("slide");
+    let slides = document.getElementsByClassName("lightbox-photo");
 
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";

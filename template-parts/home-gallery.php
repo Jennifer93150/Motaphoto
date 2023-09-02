@@ -1,6 +1,6 @@
 <!-- GALLERY OF HOME PAGE -->
 <section class="home-page">
-    <?php get_template_part('template-parts/form');?>
+    <?php get_template_part('template-parts/filters');?>
     <!-- START OF GALLERY -->
     <div id="gallery_wrap" class="block-photo">
         <?php

@@ -35,9 +35,7 @@ function filter_function()
 		ob_start(); //Turn on output buffering
 
 		while ($query->have_posts()) : $query->the_post();
-		// var_dump(file_get_contents("php://input"), $category);
 			get_template_part('template-parts/photo_block');
-			
 		endwhile;
 
 		$posts_html = ob_get_contents();
